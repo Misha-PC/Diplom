@@ -1,0 +1,65 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/site.css">
+    <!--    <link rel="stylesheet" href="/static/css/{{page.style}}.css">-->
+    <title> {{page.title}} - #DedSite </title>
+
+    <style>
+
+<!--      body{-->
+<!--          background-image: url(../static/img/solnechnyy-london.jpg);-->
+<!--          background-repeat: no-repeat;-->
+<!--          background-attachment: fixed;-->
+<!--          background-size: cover;-->
+<!--      }-->
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <div class="in">
+        {{page.head}}
+    </div>
+</div>
+<div class="body">
+    <div class="img-container">
+        <img class="img1" src="https://icdn.lenta.ru/images/2021/04/27/16/20210427163138131/square_320_c09ebae17387b7d6eeb9fa0d42afe5ee.jpg">
+    </div>
+
+    <div class="in">
+        {{ page.body | safe }}
+    </div>
+</div>
+
+<div class="side">
+    <div class="in">
+        {% for i in page.side %}
+        <li>{{ i }}</li>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<div class="bottom">
+    <div class="in">
+        сайт создан при поддержке:"сдохни или умри" <br>
+        Powered by "кто прочитал тот здохнет"
+    </div>
+    <div class="contact">
+        <div class="button">
+            Связаться с нами
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>

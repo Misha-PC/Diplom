@@ -1,0 +1,128 @@
+
+
+.header{
+    opacity:80%;
+    border-bottom: 2px solid black;
+    position: absolute;
+    font-size: 150%;
+    top:  0;
+    left: 0;
+    width: 100%;
+    height: 148px;
+    background-color: aqua;
+
+    vertical-align: middle;
+    display: table-cell;
+    /* opacity: 50%; */
+}
+
+
+.body{
+    position: absolute;
+    opacity:80%;
+
+    top: 150px;
+    bottom: 100px;
+    left: 0;
+    right: 20%;
+    background-color: lightgreen;
+    /* opacity: 50%; */
+}
+
+.side{
+    opacity:80%;
+
+    border-left: 2px solid black;
+    position: absolute;
+    top: 150px;
+    bottom: 100px;
+    right: 0;
+    left: 80%;
+    background-color: bisque;
+    /* opacity: 50%; */
+}
+
+.bottom{
+    opacity:80%;
+
+    border-top: 2px solid black;
+    position: absolute;
+   /* height: 100px; */
+    height: 10%;
+    bottom: 0;
+    right:  0;
+    left:   0;
+    background-color: cyan;
+    /* opacity: 50%; */
+}
+
+.about{
+    position: absolute;
+    left: 20px;
+    color: red;
+}
+
+.contact{
+    position: absolute;
+    right: 20px;
+
+}
+.button{
+    position: relative;
+    border-radius: 25px;
+    background-color: blueviolet;
+    top: -35px;
+    left: -20px;
+    width: 200px;
+    height: 80px;
+    transition: 1s;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}/*
+
+
+.button{
+    border-radius: 25px;
+    background-color: blueviolet;
+    transition: 1s;
+
+
+    font-size: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+*/
+
+.button:hover{
+    background-color: blue;
+    color: white;
+}
+
+.in{
+    /* background-color: aliceblue;
+    opacity: 80%; */
+    position: sticky;
+    left:   10px;
+    right:  10px;
+    top:    10px;
+    bottom: 10px;
+}
+
+.img-container{
+        position: sticky;
+        position:
+
+
+}
+
+.upper{
+    font-size: 150%;
+}
+
+.img1{
+    margin-top: 10px;
+    opacity:100%;
+}
