@@ -16,6 +16,7 @@ from database import db
 from bot.keyboards import ACTION_KEYBOARD
 from bot.keyboards import code_to_action
 from datetime import datetime
+from config import ServerConfiguration
 from telebot import types
 
 
@@ -42,15 +43,23 @@ def text(message, user=None):
         return
 
     if user.status < 1:
+        if user.status == -222:
+            teleBot.send_message(message.chat.id, "Спасибо, ваша жалоба будет рассмотрена в ближайшее время.")
+            teleBot.send_message("337804063", f"Пользователь {message.chat.id} отправил жалобу: {message.text}")
+            db.set_user_status(0, user.id)
+            return
+
         if user.status == -1:
             site = db.new_site(user.id, message.text)
-            href = 'https://366e8d8c7552.ngrok.io'
+            # href = 'https://0fc752a06314.ngrok.io'
+            href = ServerConfiguration.HOST
             db.select_site(user.id, site.id)
             teleBot.send_message(message.chat.id,
                                  f"Создан сайт {site.title}. Вот ссылочка: {href}/site/{site.slug}",
                                  reply_markup=ACTION_KEYBOARD)
+            db.set_user_status(0, user.id)
             return
-        teleBot.send_message(message.chat.id, "И куда это записывать? Выберите действие! /")
+        teleBot.send_message(message.chat.id, "И куда это записывать? Выберите действие! ")
         return
 
     column = code_to_action(user.status)

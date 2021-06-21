@@ -45,7 +45,7 @@ def dict_to_keyboard(keys, name):
 
     for item in keys.items():
         code, text = item
-        keyboard.add(types.InlineKeyboardButton(text=text, callback_data=f"{name}:{code}"))
+        keyboard.add(types.InlineKeyboardButton(text=str(text), callback_data=f"{name}:{code}"))
 
     return keyboard
 

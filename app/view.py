@@ -17,6 +17,13 @@ def render(page=None):
 
     print(page.__dict__)
 
+    if not page.__dict__:
+        error = {
+            'title': "Error 404!",
+            'body': "Page not found."
+        }
+        return render_template("pattern.html", page=error)
+
     return render_template("pattern.html", page=page.__dict__)
 
     if request.values.get('raw'):

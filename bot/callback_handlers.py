@@ -40,15 +40,11 @@ def callback_worker(call):
     if ":" not in call.data:
         return
     code, value = call.data.split(":")
-
     handler_list = {
         'select': select,
         'del': remove,
         'action': action
     }
-
     handler_list[code](call.message.chat.id, value)
-
     print(call.data)
-    # bot.clear_step_handler(call.message)
     teleBot.clear_step_handler_by_chat_id(chat_id=call.message.chat.id)

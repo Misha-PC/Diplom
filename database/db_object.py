@@ -468,3 +468,5 @@ class Database(object):
     def update_site_data(self, site_id, **kwargs):
         self.update(self.site_table, kwargs, id=site_id)
 
+    def remove_site(self, site_id):
+        self.delete(self.site_table, id=site_id)

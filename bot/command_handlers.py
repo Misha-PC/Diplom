@@ -2,6 +2,7 @@ from bot import teleBot
 from database import db
 from bot.keyboards import ACTION_KEYBOARD
 from bot.keyboards import dict_to_keyboard
+from config import ServerConfiguration
 from telebot import types
 
 HOST = "localhost:5000/"
@@ -44,7 +45,7 @@ def new_site(message, user):
 
     title = message.text[5:]
     site = db.new_site(user.id, title)
-    href = 'https://366e8d8c7552.ngrok.io'
+    href = ServerConfiguration.HOST
     msg = f'Создан сайт {site.title}. Вот ссылочка: {href}/site/{site.slug}'
     teleBot.send_message(message.chat.id, text=msg, reply_markup=ACTION_KEYBOARD)
     print("New site:", site)
@@ -69,7 +70,7 @@ def get_status(message, user):
         data.update({site.id: site.title})
     keyboard = dict_to_keyboard(data, 'select')
 
-    teleBot.send_message(message.chat.id, f'Select site:', reply_markup=keyboard)
+    teleBot.send_message(message.chat.id, 'Select site:', reply_markup=keyboard)
 
 
 @teleBot.message_handler(commands=['select'])
@@ -84,6 +85,25 @@ def get_status(message, user):
 
 
 @teleBot.message_handler(commands=['set'])
-@db.user
-def get_status(message, user):
+def get_status(message):
     teleBot.send_message(message.chat.id, text='Выберите действие:', reply_markup=ACTION_KEYBOARD)
+
+
+@teleBot.message_handler(commands=['del'])
+@db.user
+def delete_site(message, user):
+    if not user.selected:
+        teleBot.send_message(message.chat.id, "Не выбран сайт для удаления.")
+        return
+    site = db.get_site(site_id=user.selected)
+    teleBot.send_message(message.chat.id, f"Сайт '{site.__dict__['title']}' был удалён.")
+    db.remove_site(user.selected)
+    db.select_site(user.id, 0)
+
+
+@teleBot.message_handler(commands=['report'])
+@db.user
+def report(message, user):
+    db.set_user_status(-222, user.id)
+    teleBot.send_message(message.chat.id, "Отправьте адрес сайта, на котором вы обнаружили неподобающий контент.")
+

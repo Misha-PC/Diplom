@@ -13,7 +13,12 @@ class BotConfiguration(object):
     """
         Telegram bot config.
     """
-    TOKEN = r"527820020:AAGj3qIgb_cmkDWWIIXEC4w-cMR3pJ9QvRA"
+    # TOKEN = r"527820020:AAGj3qIgb_cmkDWWIIXEC4w-cMR3pJ9QvRA"
+    TOKEN = r"1836679393:AAHUCurIt8KUGEn4dvHJMqDDu4sJnnyC54U"
+
+
+class ServerConfiguration(object):
+    HOST = "https://4a7aa01f7880.ngrok.io"
 
 
 class DBConfiguration(object):
